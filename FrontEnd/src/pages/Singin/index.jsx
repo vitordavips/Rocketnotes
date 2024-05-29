@@ -10,10 +10,10 @@ export function SingIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { SingIn } = useAuth();
+    const { singIn } = useAuth();
     
-    function handleSignIn(){
-        SingIn({ });
+    function handleSingIn(){
+        singIn({ email, password });
     }
 
     return (
@@ -38,7 +38,7 @@ export function SingIn() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <Button title="Entrar" onClick={handleSignIn}/>
+                <Button title="Entrar" onClick={handleSingIn}/>
                     
                 <Link to="/register">
                     Criar Conta

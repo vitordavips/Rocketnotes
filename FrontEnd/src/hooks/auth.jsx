@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 // chamando a api
 import { api } from '../services/api';
@@ -8,13 +8,19 @@ const AuthContext = createContext({});
 
 //componente fornecedor do contexto
 function AuthProvider({ children }) {
+    const [data, setData] = useState({});
 
     //função de autentificação 'email' e 'password'
     async function singIn({ email, password }){
         
         try{
             const response = await api.post("/sessions", { email, password });
-            console.log(response);
+            const { user, token } = response.data;
+            
+            // Inserindo um token do tipo Bearer com autorização para todas as requisições.
+            api.defaults.headers.authorization = `Bearer ${token}`;
+            setData({ user, token })
+
         } catch (error){
             if (error.response) {
                 alert(error.response.data.message);
@@ -26,7 +32,7 @@ function AuthProvider({ children }) {
     }
 
     return(
-        <AuthContext.Provider value={{ singIn }}>
+        <AuthContext.Provider value={{ singIn, user: data.user }}>
             {children}
         </AuthContext.Provider>
     )
