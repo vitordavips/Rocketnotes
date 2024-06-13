@@ -1,6 +1,7 @@
 //Aqui vai está importando o ícone do button com a biblioteca React-icons.
 import { RiShutDownLine } from 'react-icons/ri'
 import { Container, Profile, Logout } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 export function Header() {
     return (
