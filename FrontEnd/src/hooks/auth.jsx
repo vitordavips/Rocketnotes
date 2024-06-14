@@ -24,7 +24,7 @@ function AuthProvider({ children }) {
             localStorage.setItem('@rocketnotes:token', token);
 
             // Configura o token de autorização para todas as requisições futuras
-            api.defaults.headers.authorization = `Bearer ${token}`;
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             // Armazena o usuário e o token no estado local
             setData({ user, token });
@@ -53,7 +53,7 @@ function AuthProvider({ children }) {
         const user = localStorage.getItem('@rocketnotes:user');
 
         if(token && user){
-            api.defaults.headers.authorization = `Bearer ${token}`;
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             setData({
                 token,
