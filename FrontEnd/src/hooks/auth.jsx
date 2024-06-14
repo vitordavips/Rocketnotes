@@ -40,7 +40,7 @@ function AuthProvider({ children }) {
         }
     }
 
-    // Função de LogOut
+    // Função de Logout
     function signOut() {
         localStorage.removeItem("@rocketnotes:token");
         localStorage.removeItem("@rocketnotes:user");
