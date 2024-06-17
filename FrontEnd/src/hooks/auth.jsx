@@ -55,6 +55,7 @@ function AuthProvider({ children }) {
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
 
             setData({ user, token: data.token });
+            alert("Perfil atuallizado!!");
         } catch (error) {
             if(error.response){
                 alert(error.response.data.message);
@@ -81,7 +82,7 @@ function AuthProvider({ children }) {
 
     // Renderiza o provedor do contexto com a função singIn e os dados do usuário
     return (
-        <AuthContext.Provider value={{ singIn, user: data.user, signOut }}>
+        <AuthContext.Provider value={{ singIn, signOut, updateProfile, user: data.user,  }}>
             {children}
         </AuthContext.Provider>
     )
