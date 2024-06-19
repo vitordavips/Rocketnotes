@@ -20,7 +20,7 @@ export function Profile(){
             password: passwordNew,
             old_password: passwordOld,
         }
-        await updateProfile({});
+        await updateProfile({ user }); 
     }
 
     return(
@@ -80,7 +80,7 @@ export function Profile(){
  
                 />
 
-                <Button title="Salvar" onclick={handleUpdate} />
+                <Button title="Salvar" onClick={handleUpdate} />
             </Form>
                         
         </Container>
